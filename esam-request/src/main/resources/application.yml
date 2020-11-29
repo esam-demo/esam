@@ -1,0 +1,10 @@
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.esam: DEBUG

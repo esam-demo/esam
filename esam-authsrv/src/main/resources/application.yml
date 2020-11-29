@@ -1,0 +1,35 @@
+
+signing:
+  key: ${ESAM_SIGN_KEY}
+
+server:
+  port: 8901
+  contextPath: /auth
+
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://kub-client:3306/esam-authservice
+    username: esam
+    password: "{cipher}AQAXe/7+jYyg6OF4rWrM9p9LyZ4l3AutdkwiPaLHyzd0lj47oPvBzfbtXT6pwblqFHL0cYSOfurYn1E3M+/yLsw0bDHiFj5aOPbjwx6/xktuPfhivsI5QTxRhsuo8o5Ya5PiAncZ4+HQATaoGwu3vpcNPP5q4NK11gdsScNVeWjOUxcVeFtSIvjrl1hzcAWBk+9ru+VHy6cqwLQavITRkCQzz4EmyH+r+7JC6x5Mv3np2ONAZavHHNBUch8lRbuRA0ybPCqBQG8E5KWVK7wyKtWFfVZLEUqotGv+STH2wDoiLzEOLLx+bnYpFoxuGWeLjml3OkasBC+Bjv37YP8AxFVHwj9FXiOIZ5+mAVUAUV2D7FzmZb++RdD50m/0ma3CCPs="
+
+#Setting the logging levels for the service
+logging:
+  level:
+#    root: debug
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.esam: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: "env,beans"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true

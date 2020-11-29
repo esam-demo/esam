@@ -1,0 +1,56 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: resourceservice
+  profiles:
+    active: default
+  cloud:
+    config:
+      enabled: true
+#      uri: http://localhost:8888
+      label: master
+#      username: confsrv
+#      password: confsrv
+      discovery:
+        enabled: true
+        service-id: CONFIGSERVER
+
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka-host-01:18761/eureka/,http://eureka-host-02:18762/eureka/,http://eureka-host-03:18763/eureka/
+
+encrypt:
+  #  key: $ENCRYPT_KEY  # cloud be replaced by keystore
+  key-store:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #exclude: "env,beans"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true

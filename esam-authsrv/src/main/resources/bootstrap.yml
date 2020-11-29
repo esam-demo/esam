@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: authorizationservice
+  profiles:
+    active:
+      defualt
+  cloud:
+    config:
+      enabled: true
+      label: master
+      discovery:
+        enabled: true
+        service-id: CONFIGSERVER
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://eureka-host-01:18761/eureka/,http://eureka-host-02:18762/eureka/,http://eureka-host-03:18763/eureka/
+
+encrypt:
+  #  key: $ENCRYPT_KEY  # cloud be replaced by keystore
+  key-store:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme

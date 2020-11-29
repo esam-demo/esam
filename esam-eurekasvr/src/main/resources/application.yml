@@ -1,0 +1,28 @@
+
+server:
+  port: 8761
+
+spring:
+  application:
+    name: esam-eurekasrv
+#  security:
+#    user:
+#      name: esam
+#      password: esam
+
+## Standalone Eureka Server
+eureka:
+  instance:
+    hostname: localhost
+
+  server:
+#    wait-time-in-ms-when-sync-empty: 5
+#    renewalPercentThreshold: 0.49 # 设置心跳正常的阀值
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+

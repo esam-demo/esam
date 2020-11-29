@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        encrypt.enabled: false
+        git:
+          uri: https://github.com/esam-demo/config-repo
+          search-paths: requestservice,resourceservice
+          default-label: master
+          username: esam-demo
+          password: Esam-emo1
+
+
+encrypt:
+#  key: $ENCRYPT_KEY  # cloud be replaced by keystore
+  key-store:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme
+

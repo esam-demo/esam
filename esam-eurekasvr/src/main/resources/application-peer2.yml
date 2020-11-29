@@ -1,0 +1,26 @@
+
+server:
+  port: 18762
+
+spring:
+  application:
+    name: esam-eurekasrv-peer2
+
+
+eureka:
+  instance:
+    hostname: eureka-host-02
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://eureka-host-01:18761/eureka/,http://eureka-host-03:18763/eureka/
+
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+    wait-time-in-ms-when-sync-empty: 0
